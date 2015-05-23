@@ -5,7 +5,16 @@
 ## This function returns a list of setter and getter methods of a matrix and its inverse
 
 makeCacheMatrix <- function(x = matrix()) {
-        
+   i <- NULL
+   set <- function(y) {
+   x <<- y ## setting the value of the variable in the global environment
+   i <<- NULL ## setting the value of the variable in the global environment
+   }
+   get <- function() x
+   
+   setInverse <- function(inverse) i <<- inverse
+   getInverse <- function() i
+   list(set = set, get = get, setInverse = setInverse , getInverse = getInverse) # reutrning a list of functions
 }
 
 
@@ -13,4 +22,13 @@ makeCacheMatrix <- function(x = matrix()) {
 
 cacheSolve <- function(x, ...) {
         ## Return a matrix that is the inverse of 'x'
+        i <- x$getInverse()
+        if(!is.null(i)) {
+                message("getting cached data")
+                return(i)
+        }
+        data <- x$get()
+        m <- solve(data)
+        x$setInverse(i)
+        i
 }
