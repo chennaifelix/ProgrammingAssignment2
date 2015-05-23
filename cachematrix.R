@@ -1,10 +1,11 @@
-## Put comments here that give an overall description of what your
-## functions do
+## This file provides utility to cache a matrix inverse
+## MakeCacheMatrix is used as a getter setter for the matrix and matrix inversions
+## cacheSolve identifies if a matrix inverse is already available and caculates if not present
 
-## Write a short comment describing this function
+## This function returns a list of setter and getter methods of a matrix and its inverse
 
 makeCacheMatrix <- function(x = matrix()) {
-
+        
 }
 
 
